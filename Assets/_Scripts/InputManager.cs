@@ -40,5 +40,8 @@ public class InputManager : MonoBehaviour
             OnDash?.Invoke();
         }
         OnMove?.Invoke(input.normalized);
+
+        if(GameManager.Instance.IsSettingsMenuActive) return;
     }
+
 }
