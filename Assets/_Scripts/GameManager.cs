@@ -10,9 +10,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private GameObject settingsMenu;
 
     private bool isSettingsMenuActive;
-    public bool isSettingsMenuActive => isSettingsMenuActive;
-
-
+    public bool IsSettingsMenuActive => isSettingsMenuActive;
     protected override void Awake()
     {
         base.Awake();
@@ -54,5 +52,13 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     {
         score++;
         coinCounter.UpdateScore(score);
+    }
+    public void QuitGame()
+    { 
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }
